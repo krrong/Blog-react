@@ -18,6 +18,12 @@ function App() {
       </div>
 
       <button onClick={()=>{
+        let copy = [...글제목].sort();
+        console.log(copy);
+        글제목변경(copy);
+      }}>가나다순 정렬</button>
+
+      <button onClick={()=>{
         let copy = [...글제목];
         copy[0] = '여자코트 추천';
         글제목변경(copy);
@@ -35,9 +41,23 @@ function App() {
         <h4>{ 글제목[2] }</h4>
         <p>2월 17일 발행</p>
       </div>
+
+      <Modal></Modal>
+
       <h4>{ post }</h4>
     </div>
   );
+}
+
+// 컴포넌트
+function Modal(){
+  return (
+    <div className='modal'>
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+  )
 }
 
 export default App;
