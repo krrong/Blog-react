@@ -7,6 +7,7 @@ function App() {
   let [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동맛집', '파이썬독학']);
   let [따봉, 따봉변경] = useState([0,0,0]);
   let [modal, setModal] = useState(false);
+  let [title, setTitle] = useState(0);
 
   return (
     <div className="App">
@@ -30,7 +31,7 @@ function App() {
         글제목.map(function(title, index){
           return(
             <div className='list'>
-              <h4 onClick={() => { setModal(!modal)} }>{ title } 
+              <h4 onClick={() => { setModal(!modal); setTitle(index)} }>{ title } 
                 <span onClick={ ()=> {
                   let copy = [...따봉]
                   copy[index] = copy[index] + 1
@@ -48,7 +49,7 @@ function App() {
           let copy = [...글제목];
           copy[0] = '여자코트 추천';
           글제목변경(copy);
-        }} 글제목={글제목}/> : null
+        }} 글제목={글제목} title={title}/> : null
       }
 
       <h4>{ post }</h4>
@@ -60,7 +61,7 @@ function App() {
 function Modal(props){
   return (
     <div className='modal'>
-      <h4>{props.글제목[0]}</h4>
+      <h4>{props.글제목[props.title]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
       <button onClick={props.글수정}>글수정</button>
