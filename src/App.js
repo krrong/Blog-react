@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 function App() {
   let post = '강남 우동 맛집';
@@ -67,6 +67,8 @@ function App() {
       }
 
       <h4>{ post }</h4>
+
+      <Modal2/>
     </div>
   );
 }
@@ -81,6 +83,27 @@ function Modal(props){
       <button onClick={props.글수정}>글수정</button>
     </div>
   )
+}
+
+class Modal2 extends React.Component {
+   constructor(){
+    super()
+
+    // class 컴포넌트에서 state 만드는 방법
+    this.state = {
+        name : 'kim',
+        age : 20
+    }
+   }
+   render(){
+    return (
+      <div>안녕 {this.state.age}
+        <button onClick={()=>{
+          this.setState({age : 21})
+        }}>버튼</button>
+      </div>
+    )
+   }
 }
 
 export default App;
